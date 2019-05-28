@@ -46,9 +46,11 @@ Flags:
 
 var (
 	holder   = flag.String("c", "Google LLC", "copyright holder")
-	license  = flag.String("l", "apache", "license type: apache, bsd, mit")
+	license  = flag.String("l", "apache", "license type: apache, bsd, mit, gpl")
 	licensef = flag.String("f", "", "license file")
 	year     = flag.String("y", fmt.Sprint(time.Now().Year()), "copyright year(s)")
+	project = flag.String("p", "Project", "project name - specifically for GPL")
+
 )
 
 func main() {
@@ -65,6 +67,7 @@ func main() {
 	data := &copyrightData{
 		Year:   *year,
 		Holder: *holder,
+		Project: *project,
 	}
 
 	var t *template.Template

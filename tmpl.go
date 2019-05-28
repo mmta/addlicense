@@ -29,11 +29,13 @@ func init() {
 	licenseTemplate["apache"] = template.Must(template.New("").Parse(tmplApache))
 	licenseTemplate["mit"] = template.Must(template.New("").Parse(tmplMIT))
 	licenseTemplate["bsd"] = template.Must(template.New("").Parse(tmplBSD))
+	licenseTemplate["gpl"] = template.Must(template.New("").Parse(tmplGPL))
 }
 
 type copyrightData struct {
 	Year   string
 	Holder string
+	Project string
 }
 
 // prefix will execute a license template t with data d
@@ -94,3 +96,19 @@ FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
 COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.`
+
+const tmplGPL = `Copyright (c) {{.Year}} {{.Holder}}, All rights reserved.
+
+This file is part of {{.Project}}.
+
+{{.Project}} is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation version 3 of the License.
+
+{{.Project}} is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with {{.Project}}. If not, see <https://www.gnu.org/licenses/>.`
